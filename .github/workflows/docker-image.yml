@@ -24,7 +24,7 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v1.6.0
       with:
-        registry: ${{ github.event.inputs.registry }}
+        registry: ${{ github.event.inputs.docker_registry }}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         logout: true
