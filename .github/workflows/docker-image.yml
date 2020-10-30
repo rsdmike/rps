@@ -2,14 +2,15 @@ name: Docker Image CI
 
 on:
   workflow_dispatch:
-    docker_registry:
-          description: 'Registry URL'     
-          required: true
-          default: 'docker.io/username'
-    docker_tag_name:
-          description: 'Tag you wish to use on the docker image'     
-          required: true
-          default: 'rps:v1'
+    inputs:
+      docker_registry:
+            description: 'Registry URL'     
+            required: true
+            default: 'docker.io/username'
+      docker_tag_name:
+            description: 'Tag you wish to use on the docker image'     
+            required: true
+            default: 'rps:v1'
 jobs:
 
   build:
