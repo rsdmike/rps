@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "939604bb-6a9a-4449-a917-bd0e00c0ec87",
+		"name": "cira",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create CIRA Config",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-RPS-API-Key",
+						"type": "text",
+						"value": "APIKEYFORRPS123!"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payload\": {\r\n        \"configName\": \"ciraconfig2\",\r\n        \"mpsServerAddress\": \"192.168.8.50\",\r\n        \"mpsPort\": 4433,\r\n        \"username\": \"admin\",\r\n        \"password\": \"Intel123!\",\r\n        \"commonName\": \"192.168.8.50\",\r\n        \"serverAddressFormat\": 201,\r\n        \"authMethod\": 2,\r\n        \"mpsRootCertificate\": \"rootcert\",\r\n        \"proxyDetails\": \"\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:8081/api/v1/admin/ciraconfigs/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"ciraconfigs",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All CIRA Configs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Result length should be 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});\r",
+							"pm.test(\"Result 1 should be equal to example\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].ConfigName).to.eql(\"ciraconfig1\")\r",
+							"    pm.expect(jsonData[0].MPSServerAddress).to.eql(\"localhost\")\r",
+							"    pm.expect(jsonData[0].MPSPort).to.eql(4433)\r",
+							"    pm.expect(jsonData[0].Username).to.eql(\"admin\")\r",
+							"    pm.expect(jsonData[0].Password).to.eql(\"P@ssw0rd\")\r",
+							"    pm.expect(jsonData[0].CommonName).to.eql(\"localhost\")\r",
+							"    pm.expect(jsonData[0].ServerAddressFormat).to.eql(201)\r",
+							"    pm.expect(jsonData[0].AuthMethod).to.eql(2)\r",
+							"    pm.expect(jsonData[0].MPSRootCertificate).to.eql(\"rootcert\")\r",
+							"    pm.expect(jsonData[0].ProxyDetails).to.eql(\"\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-RPS-API-Key",
+						"type": "text",
+						"value": "APIKEYFORRPS123!"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:8081/api/v1/admin/ciraconfigs/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"ciraconfigs",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

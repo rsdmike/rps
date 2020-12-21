@@ -8,7 +8,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,4 +28,8 @@ jobs:
     - run: npm test
     - uses: codecov/codecov-action@v1.0.14
       name: Upload Coverage Results
+    - uses: matt-ball/newman-action@master
+      with:
+        collection: ./src/test/collections/cira.postman_collection.json
+        
 
