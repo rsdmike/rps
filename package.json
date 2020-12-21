@@ -38,7 +38,7 @@
     "@types/node-vault": "^0.9.0",
     "@types/ws": "^6.0.1",
     "jest": "^26.4.2",
-    "jest-sinon": "^1.0.1",
+    "jest-sinon": "^1.0.4",
     "jest-transform-stub": "^2.0.0",
     "nodemon": "^2.0.2",
     "request": "^2.88.0",
